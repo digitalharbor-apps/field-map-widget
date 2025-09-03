@@ -57,6 +57,7 @@
     # 'currency': 'USD',
     'images': [
         'static/description/icon.png',
+        'static/description/banner.jpg'
     ],
     'assets': {
         'web.assets_backend': [

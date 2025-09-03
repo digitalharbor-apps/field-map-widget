@@ -33,11 +33,11 @@ export class MapField extends CharField {
         latitudeField: { type: String, optional: false },
         longitudeField: { type: String, optional: false },
         enableSearch: { type: Boolean, optional: true },
-        noEdit: { type: Boolean, optional: true },
+        readOnly: { type: Boolean, optional: true },
     };
     static defaultProps = {
         enableSearch: false,
-        noEdit: false,
+        readOnly: false,
     };
     
     setup() {
@@ -88,7 +88,7 @@ export class MapField extends CharField {
                 if (this.mapContainerRef.el && !this.leafletMap && !this.state.isMapInitialized) {
                     this.initializeMap();
                     this.setupMapInteractions();
-                    if (this.props.enableSearch) {
+                    if (this.props.enableSearch && !this.props.readOnly) {
                         this.setupSearch();
                     }
                     this.state.isMapInitialized = true;
@@ -132,7 +132,7 @@ export class MapField extends CharField {
      * Setup map click interactions
      */
     setupMapInteractions() {
-        if (this.props.noEdit) {
+        if (this.props.readOnly) {
             return;
         }
 
@@ -244,7 +244,7 @@ export class MapField extends CharField {
                     this.marker = L.marker([lat, lng]).addTo(this.leafletMap);
                 }
                 
-                if (!this.props.noEdit) {
+                if (!this.props.readOnly) {
                     this.props.record.update({
                         [this.props.latitudeField]: lat,
                         [this.props.longitudeField]: lng,
@@ -289,7 +289,7 @@ export const mapField = {
         },
         {
             label: "Disable editing (read-only mode)",
-            name: "no_edit",
+            name: "readonly",
             type: "boolean",
             default: false,
         },
@@ -299,7 +299,7 @@ export const mapField = {
         latitudeField: options.latitude_field,
         longitudeField: options.longitude_field,
         enableSearch: options.enable_search,
-        noEdit: options.no_edit,
+        readOnly: options.readonly,
     }),
 };
 

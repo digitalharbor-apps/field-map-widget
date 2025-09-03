@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
     <t t-name="dh_map_widget.MapField" t-inherit-mode="extension">
-        <div id="resultContainer" t-att-class="this.props.enableSearch? 'mb-2': 'd-none'">
+        <div id="resultContainer" t-att-class="this.props.enableSearch  &amp;&amp; !this.props.readOnly? 'mb-2': 'd-none'">
             <input type="text" class="form-control" t-ref="mapSearchField"/>
             <div class="results"  t-ref="mapSearchResult"></div>
         </div>

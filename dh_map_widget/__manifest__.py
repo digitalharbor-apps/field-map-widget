@@ -46,7 +46,7 @@
     """,
     
     'author': "Digital Harbor",
-    'website': "https://www.digitalharbor.com.sa",
+    'website': "https://digitalharbor.com.sa",
     'category': 'Extra Tools',
     'version': '18.0.1.0.0',
     'depends': [],
@@ -55,10 +55,7 @@
     'license': 'LGPL-3',
     # 'price': 0.00,
     # 'currency': 'USD',
-    'images': [
-        'static/description/icon.png',
-        'static/description/banner.jpg'
-    ],
+    'images': ['static/description/banner.jpg'],
     'assets': {
         'web.assets_backend': [
             'dh_map_widget/static/src/*.css',
